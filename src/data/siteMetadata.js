@@ -23,7 +23,7 @@ const siteMetadata = {
   mastodon: 'https://social.fmvilas.me/@fran',
   locale: 'en-US',
   analytics: {
-    googleAnalyticsId: 'G-BXMJWVVSG3', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: 'G-9N32HMMFX1', // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
     provider: '',
