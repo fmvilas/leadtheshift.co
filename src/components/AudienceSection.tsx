@@ -2,7 +2,7 @@ import { CheckCircle } from 'lucide-react';
 
 const AudienceSection = () => {
   return (
-    <section id="audience" className="py-16 md:py-24 bg-book-primary text-book-darkGray">
+    <section id="audience" className="py-16 md:py-24 bg-book-primary/80 text-book-darkGray">
       <div className="container px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 opacity-0 animate-slide-up">
           <h2 className="text-book-lightPink text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Who This Book Is For</h2>

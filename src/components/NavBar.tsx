@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 
@@ -7,29 +7,10 @@ const NavBar = ({
 }: {
   items: { name: string; href: string }[];
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Handle scroll event to change navbar appearance
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-transparent'
-    }`}>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-md">
       <div className="container px-4 py-4 md:px-6">
         <div className="flex items-center justify-center">
           {/* Desktop Navigation */}
@@ -38,9 +19,7 @@ const NavBar = ({
               <a
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium ${
-                  isScrolled ? 'text-book-darkGray hover:text-book-secondary' : 'text-book-darkGray hover:text-book-secondary'
-                } transition-colors`}
+                className="text-sm font-medium text-book-darkGray hover:text-book-secondary transition-colors"
               >
                 {item.name}
               </a>
