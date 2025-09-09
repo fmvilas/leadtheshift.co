@@ -55,7 +55,7 @@ const AboutSection = () => {
               </ul>
             </div>
           </div>
-          <div className="space-y-8 opacity-0 animate-slide-up animate-delay-300">
+          <div className="space-y-8 opacity-0 animate-slide-up animate-delay-300 bg-slate-100 p-8 rounded-lg">
             <div className="space-y-2">
               <h3 className="text-book-darkGray text-2xl font-bold">Table of Contents</h3>
               <p className="text-book-darkGray text-md">Get a sneak peek at what's inside.</p>
