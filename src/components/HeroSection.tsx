@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-24 lg:py-32 text-book-darkGray">
+    <section className="relative overflow-hidden pb-20 md:pb-24 lg:pb-32 text-book-darkGray">
       <div className="container px-4 md:px-6 relative z-10">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <div className="mx-auto aspect-[4/5] overflow-hidden p-20 flex items-center justify-center opacity-0 animate-fade-in animate-delay-300">
