@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import GoogleAnalytics from '@/components/GoogleAnalytics'
-import StyleGuide from "./pages/resources/StyleGuide";
+import StyleGuide from "./pages/resources/ShiftCommunicationStyleGuide";
 import VistaFramework from "./pages/resources/VistaFramework";
 import "./App.css";
 
