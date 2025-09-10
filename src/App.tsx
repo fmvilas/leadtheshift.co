@@ -21,7 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/resources/style-guide" element={<StyleGuide />} />
+          <Route path="/resources/shift-communication-style-guide" element={<StyleGuide />} />
           <Route path="/resources/vista-framework" element={<VistaFramework />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
