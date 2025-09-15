@@ -1,15 +1,15 @@
 import Footer from "@/components/Footer";
 import Post from "@/components/ui/post";
-import content from "../../markdown/vista-framework.md?raw";
+import content from "../../markdown/eda-complexity-management-checklist.md?raw";
 
-function VistaFramework() {
+function ManagementChecklist() {
   return (
     <div>
       <main className="flex-grow pt-32 md:pt-0">
         <Post
-          title={`The "Shift" Vista Framework`}
+          title={`EDA Complexity Management Checklist`}
           content={content}
-          cover={"/static/images/vista-framework.webp"}
+          cover={"/static/images/cube.webp"}
         />
       </main>
       <Footer />
@@ -17,4 +17,4 @@ function VistaFramework() {
   );
 }
 
-export default VistaFramework;
+export default ManagementChecklist;
