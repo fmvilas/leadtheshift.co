@@ -79,7 +79,7 @@ const Post: React.FC<PostProps> = ({ title, cover, content }) => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute h-full w-full bg-[radial-gradient(#1D3557_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
       </div>
-      <header className="mb-8 mt-20 py-12 flex flex-col justify-center items-center h-[500px]">
+      <header className="mb-8 mt-20 md: mt-28 py-12 flex flex-col justify-center items-center h-[500px] md:h-[100%]">
         <div className="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-8">
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <h1 className="text-4xl leading-15 lg:text-6xl font-bold text-book-secondary leading-tight">
@@ -103,6 +103,9 @@ const Post: React.FC<PostProps> = ({ title, cover, content }) => {
               <button
                 onClick={() => setShowToc((prev) => !prev)}
                 className="text-sm bg-secondary text-secondary-foreground rounded-lg p-4 mb-4"
+                style={{
+                  position: "relative",
+                }}
               >
                 {showToc ? "Hide Table of Contents" : "Show Table of Contents"}
               </button>
