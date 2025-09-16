@@ -37,7 +37,6 @@ const App = () => (
               },
             ],
           },
-          { name: "About", href: "/resources/vista-framework" },
         ]}
       />
       <BrowserRouter>

@@ -103,6 +103,9 @@ const Post: React.FC<PostProps> = ({ title, cover, content }) => {
               <button
                 onClick={() => setShowToc((prev) => !prev)}
                 className="text-sm bg-secondary text-secondary-foreground rounded-lg p-4 mb-4"
+                style={{
+                  position: "relative",
+                }}
               >
                 {showToc ? "Hide Table of Contents" : "Show Table of Contents"}
               </button>

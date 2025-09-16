@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import EarlyReaderNotice from "./Notice";
 
-// Updated type definitions
 type NavItem = {
   name: string;
   href?: string;
@@ -16,10 +15,15 @@ type NavItem = {
 const NavBar = ({ items }: { items: NavItem[] }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [desktopActiveDropdown, setDesktopActiveDropdown] = useState<
+    string | null
+  >(null);
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<
+    string | null
+  >(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const desktopDropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -35,31 +39,40 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
     };
   }, []);
 
-  // Handle dropdown hover with delay
   const handleDropdownEnter = (itemName: string) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    setActiveDropdown(itemName);
+    setDesktopActiveDropdown(itemName);
   };
 
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150); // Small delay to prevent flickering
+      setDesktopActiveDropdown(null);
+    }, 150);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = () => {
-      setActiveDropdown(null);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        desktopDropdownRef.current &&
+        !desktopDropdownRef.current.contains(event.target as Node)
+      ) {
+        setDesktopActiveDropdown(null);
+      }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileActiveDropdown(null);
+    }
+  }, [mobileMenuOpen]);
 
   const renderDesktopNavItem = (item: NavItem) => {
     if (item.dropdown) {
@@ -67,6 +80,7 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
         <div
           key={item.name}
           className="relative"
+          ref={desktopDropdownRef}
           onMouseEnter={() => handleDropdownEnter(item.name)}
           onMouseLeave={handleDropdownLeave}
         >
@@ -78,28 +92,28 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
             } transition-colors`}
             onClick={(e) => {
               e.preventDefault();
-              setActiveDropdown(
-                activeDropdown === item.name ? null : item.name
+              setDesktopActiveDropdown(
+                desktopActiveDropdown === item.name ? null : item.name
               );
             }}
           >
             <span>{item.name}</span>
             <ChevronDown
               className={`h-4 w-4 transition-transform ${
-                activeDropdown === item.name ? "rotate-180" : ""
+                desktopActiveDropdown === item.name ? "rotate-180" : ""
               }`}
             />
           </button>
 
-          {/* Dropdown menu */}
-          {activeDropdown === item.name && (
+          {/* Desktop Dropdown menu */}
+          {desktopActiveDropdown === item.name && (
             <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50">
               {item.dropdown.map((dropdownItem) => (
                 <a
                   key={dropdownItem.name}
                   href={dropdownItem.href}
                   className="block px-4 py-2 text-sm text-book-darkGray hover:bg-gray-50 hover:text-book-secondary transition-colors"
-                  onClick={() => setActiveDropdown(null)}
+                  onClick={() => setDesktopActiveDropdown(null)}
                 >
                   {dropdownItem.name}
                 </a>
@@ -130,34 +144,42 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
       return (
         <div key={item.name}>
           <button
-            className={`flex items-center justify-between w-full py-4 text-center text-base font-medium text-book-darkGray hover:text-book-secondary transition-colors ${
-              index !== items.length - 1 ? "border-b border-gray-200/30" : ""
+            className={`flex items-center justify-between w-full py-4 px-2 text-left text-base font-medium text-book-darkGray hover:text-book-secondary transition-colors ${
+              index !== items.length - 1 && mobileActiveDropdown !== item.name
+                ? "border-b border-gray-200/30"
+                : ""
             }`}
             onClick={() => {
-              setActiveDropdown(
-                activeDropdown === item.name ? null : item.name
+              console.log("Mobile button clicked:", item.name);
+              console.log(
+                "Current mobile dropdown state:",
+                mobileActiveDropdown
+              );
+              setMobileActiveDropdown(
+                mobileActiveDropdown === item.name ? null : item.name
               );
             }}
+            type="button"
           >
-            <span className="flex-1">{item.name}</span>
+            <span className="flex-1 text-left">{item.name}</span>
             <ChevronDown
               className={`h-4 w-4 transition-transform ${
-                activeDropdown === item.name ? "rotate-180" : ""
+                mobileActiveDropdown === item.name ? "rotate-180" : ""
               }`}
             />
           </button>
 
           {/* Mobile dropdown items */}
-          {activeDropdown === item.name && (
-            <div className="bg-gray-50 border-b border-gray-200/30">
+          {mobileActiveDropdown === item.name && (
+            <div className="bg-gray-50/50 border-b border-gray-200/30">
               {item.dropdown.map((dropdownItem) => (
                 <a
                   key={dropdownItem.name}
                   href={dropdownItem.href}
-                  className="block py-3 px-6 text-sm text-book-darkGray hover:text-book-secondary transition-colors"
+                  className="block py-3 px-6 text-sm text-book-darkGray hover:text-book-secondary transition-colors border-l-2 border-transparent hover:border-book-secondary"
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    setActiveDropdown(null);
+                    setMobileActiveDropdown(null);
                   }}
                 >
                   {dropdownItem.name}
@@ -173,7 +195,7 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
       <a
         key={item.name}
         href={item.href}
-        className={`block py-4 text-center text-base font-medium text-book-darkGray hover:text-book-secondary transition-colors ${
+        className={`block py-4 px-2 text-left text-base font-medium text-book-darkGray hover:text-book-secondary transition-colors ${
           index !== items.length - 1 ? "border-b border-gray-200/30" : ""
         }`}
         onClick={() => setMobileMenuOpen(false)}
@@ -220,7 +242,9 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/20">
-          <div className="px-4 py-2">{items.map(renderMobileNavItem)}</div>
+          <div className="px-4 py-2">
+            {items.map((item, index) => renderMobileNavItem(item, index))}
+          </div>
         </div>
       )}
     </header>
