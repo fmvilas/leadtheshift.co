@@ -9,6 +9,7 @@ type NavItem = {
   dropdown?: {
     name: string;
     href: string;
+    target?: "_blank" | "_self";
   }[];
 };
 
@@ -114,6 +115,8 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
                   href={dropdownItem.href}
                   className="block px-4 py-2 text-sm text-book-darkGray hover:bg-gray-50 hover:text-book-secondary transition-colors"
                   onClick={() => setDesktopActiveDropdown(null)}
+                  target={dropdownItem.target}
+                  rel={dropdownItem.target === "_blank" ? "noopener noreferrer" : undefined}
                 >
                   {dropdownItem.name}
                 </a>

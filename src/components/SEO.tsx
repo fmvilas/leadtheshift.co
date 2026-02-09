@@ -14,6 +14,7 @@ interface PageSEOProps {
   path: string
   title: string
   description: string
+  image?: string
 }
 
 const CommonSEO = ({ path, title, description, ogType, ogImage, twImage }: CommonSEOProps) => {
@@ -45,9 +46,10 @@ const CommonSEO = ({ path, title, description, ogType, ogImage, twImage }: Commo
   )
 }
 
-export const PageSEO = ({ path, title, description }: PageSEOProps) => {
-  const ogImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
-  const twImageUrl = siteMetadata.siteUrl + siteMetadata.socialBanner
+export const PageSEO = ({ path, title, description, image }: PageSEOProps) => {
+  const defaultImage = siteMetadata.siteUrl + siteMetadata.socialBanner
+  const ogImageUrl = image ? (image.startsWith('http') ? image : siteMetadata.siteUrl + image) : defaultImage
+  const twImageUrl = ogImageUrl
   return (
     <CommonSEO
       path={path}

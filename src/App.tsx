@@ -35,6 +35,21 @@ const App = () => (
                 name: "Complexity Management Checklist",
                 href: "/resources/management-checklist",
               },
+              {
+                name: "Pilot Success Showcase",
+                href: "https://docs.google.com/document/d/1_gh25tbl2PXtjFubWSx1VILT7ueRJ7kSpIBT3WpBamI/edit?usp=sharing",
+                target: "_blank",
+              },
+              {
+                name: "Elevator Pitch Template for EDA",
+                href: "https://docs.google.com/document/d/1hU4HjhaJuwZYeCaTfCWU5YlEi3OwE7AU4BgDNQmbA1U/edit?usp=sharing",
+                target: "_blank",
+              },
+              {
+                name: "Narrative Framework for EDA Advocacy",
+                href: "https://docs.google.com/document/d/1jleMlEnIhHOzdcaqOOKPXT3Q4rYguid3WIO0yuOv_IU/edit?usp=sharing",
+                target: "_blank",
+              }
             ],
           },
         ]}
