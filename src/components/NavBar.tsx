@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
-import EarlyReaderNotice from "./Notice";
 
 type NavItem = {
   name: string;
   href?: string;
+  target?: "_blank" | "_self";
   dropdown?: {
     name: string;
     href: string;
@@ -131,6 +131,8 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
       <a
         key={item.name}
         href={item.href}
+        target={item.target}
+        rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
         className={`text-sm font-medium ${
           isScrolled
             ? "text-book-darkGray hover:text-book-secondary"
@@ -214,7 +216,6 @@ const NavBar = ({ items }: { items: NavItem[] }) => {
         isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <EarlyReaderNotice />
       <div className="container px-4 py-4 md:px-6">
         <div className="flex items-center justify-center">
           {/* Desktop Navigation */}

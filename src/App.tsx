@@ -52,6 +52,11 @@ const App = () => (
               }
             ],
           },
+          {
+            name: "Newsletter",
+            href: "https://usecommune.com/n/franmendez",
+            target: "_blank",
+          }
         ]}
       />
       <BrowserRouter>

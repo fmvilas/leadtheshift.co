@@ -16,12 +16,12 @@ const HeroSection = () => {
               </p>
             </div>
             <div className="flex flex-col gap-3 opacity-0 animate-fade-in animate-delay-300">
-              <a href="https://fmvilas.kit.com/products/pre-order-the-shift-book" target="_blank" rel="noopener noreferrer" className="mt-4 mb-2 text-center bg-book-secondary text-white px-8 py-4 rounded-md hover:bg-book-secondary/90">
-                Pre-order now!
+              <a href="https://fmvilas.kit.com/products/shift" target="_blank" rel="noopener noreferrer" className="mt-4 mb-2 text-center bg-book-secondary text-white px-8 py-4 rounded-md hover:bg-book-secondary/90">
+                Buy digital edition (PDF and ePub)
               </a>
-              <span className="text-book-darkGray/80">
-                Not ready to buy yet? <a href="https://newsletter.fmvilas.me/" target="_blank" rel="noopener noreferrer" className="text-book-secondary hover:underline">Subscribe to the newsletter</a> to get notified when the book is available.
-              </span>
+              {/* <a href="https://fmvilas.kit.com/products/pre-order-the-shift-book" target="_blank" rel="noopener noreferrer" className="mt-4 mb-2 text-center border border-gray-300 bg-white text-black px-8 py-4 rounded-md hover:bg-gray-300 hover:text-black">
+                Buy printed edition (Paperback)
+              </a> */}
             </div>
           </div>
         </div>

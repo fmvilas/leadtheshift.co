@@ -62,9 +62,8 @@ const AboutSection = () => {
             </div>
             <div className="max-w-4xl mx-auto">
               <div className="space-y-4">
-                {/* Foreword & Introduction */}
+                {/* Introduction */}
                 <div className="space-y-2">
-                  <h4 className="text-book-darkGray text-md font-semibold">Foreword</h4>
                   <h4 className="text-book-darkGray text-md font-semibold">Introduction</h4>
                 </div>
 

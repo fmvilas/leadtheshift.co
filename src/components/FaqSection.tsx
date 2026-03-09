@@ -10,12 +10,12 @@ import {
 const FaqSection = () => {
   const faqs = [
     {
-      question: "When will the book be released?",
-      answer: "It's still too early to say but I'm aiming for a release in the second half of 2025. Pre-orders will be available approximately 3 months before release. Make sure to subscribe to my newsletter to be the first to know when pre-orders are available."
+      question: "Are there any bulk purchase discounts for teams?",
+      answer: "Yes, I offer special pricing for team purchases of 5+ copies. Contact me at fran@fmvilas.me for details."
     },
     {
-      question: "What formats will be available?",
-      answer: "Shift will be available in hardcover, paperback, PDF, ePub, and Kindle formats. All digital purchases include free updates for the lifetime of the edition."
+      question: "What formats are available?",
+      answer: "Shift is available in PDF and ePub formats."
     },
     {
       question: "Is this book only relevant for those using specific technologies?",
@@ -24,11 +24,7 @@ const FaqSection = () => {
     {
       question: "I'm new to event-driven architecture. Is this book right for me?",
       answer: "Shift assumes a foundational understanding of software architecture principles and distributed systems."
-    },
-    // {
-    //   question: "Are there any bulk purchase discounts for teams?",
-    //   answer: "Yes, we offer special pricing for team purchases of 5+ copies. Contact us at team@shiftbook.com for details."
-    // }
+    }
   ];
 
   return (
